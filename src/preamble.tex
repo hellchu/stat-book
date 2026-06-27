@@ -149,6 +149,52 @@
 \renewcommand{\qedsymbol}{$\square$}
 \renewcommand*{\proofname}{Доказательство}
 
+% Настраиваем компактные отступы для теорем/определений: 
+% 3pt сверху, 3pt снизу, без отступа слева, полужирный заголовок, точка после имени
+\newtheoremstyle{compactthm}
+  {3pt}% Отступ сверху
+  {3pt}% Отступ снизу
+  {\itshape}% Шрифт тела (plain)
+  {}% Отступ слева
+  {\bfseries}% Шрифт заголовка
+  {.}% Знак после заголовка
+  {.5em}% Пробел после заголовка
+  {}% Спецификация заголовка
+
+\newtheoremstyle{compactdef}
+  {3pt}% Отступ сверху
+  {3pt}% Отступ снизу
+  {\normalfont}% Шрифт тела (definition)
+  {}% Отступ слева
+  {\bfseries}% Шрифт заголовка
+  {.}% Знак после заголовка
+  {.5em}% Пробел после заголовка
+  {}% Спецификация заголовка
+
+
+%%%%%%%%
+
+% Применяем новые компактные стили к твоим структурам
+\renewcommand{\qedsymbol}{$\\square$}\r
+\renewcommand*{\\proofname}{Доказательство}\r
+\r
+\theoremstyle{compactdef}\r
+\newtheorem*{defn}{Определение}\r
+\newtheorem*{exmp}{Пример}\r
+\newtheorem*{symb}{Обозначение}\r
+\newtheorem*{rmrk}{Замечание}\r
+\newtheorem*{task}{Задача}\r
+\r
+\theoremstyle{compactthm}\r
+\newtheorem*{thm*}{Утверждение}\r
+\newtheorem*{lem}{Лемма}\r
+\newtheorem*{crlr}{Следствие}\r
+\r
+\newtheoremstyle{named}{}{}{\\itshape}{}{\\bfseries}{.}{.5em}{\\thmnote{#3}}\r
+\theoremstyle{named}\r
+
+%%%%%%
+
 \theoremstyle{definition}
 \newtheorem*{defn}{Определение}
 \newtheorem*{exmp}{Пример}
