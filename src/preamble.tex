@@ -5,11 +5,16 @@
 \usepackage{geometry}
 \geometry{
   a4paper,
-  left=20mm,top=15mm,right=20mm,bottom=15mm,
-  headheight=0pt,headsep=0mm,foot=0pt,footskip=13mm,
-  includeheadfoot
+  left=10mm,
+  right=10mm,
+  top=7.5mm,
+  bottom=7.5mm,
+  headheight=0pt,
+  headsep=0mm,
+  footskip=5mm % Номер страницы аккуратно встает в нижнее поле 7.5мм
+  % includeheadfoot УБРАЛИ, чтобы освободить место под текст
 }
-\linespread{1.05}
+\linespread{0.97} % Чуть-чуть уплотнили строки
 \raggedbottom
 \sloppy
 
@@ -173,3 +178,11 @@
     {\end{list}}
 
 \newcommand{\CoverName}{Cover} %Нумерация обложки
+
+% Скрываем визуальное отображение \chapter
+\titleformat{\chapter}[block]{\startnewchapter}{} {0pt}{\prechaptercmd}
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+
+% Вспомогательные команды для скрытия главы
+\newcommand{\startnewchapter}{\clearpage} % Начинаем главу с новой страницы (как обычно)
+\newcommand{\prechaptercmd}[1]{}         % Полностью игнорируем текст названия главы
