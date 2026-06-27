@@ -7,8 +7,8 @@
   a4paper,
   left=10mm,
   right=10mm,
-  top=7.5mm,
-  bottom=7.5mm,
+  top=10mm,
+  bottom=10mm,
   headheight=0pt,
   headsep=0mm,
   footskip=5mm % Номер страницы аккуратно встает в нижнее поле 7.5мм
@@ -68,34 +68,14 @@
 %Заголовки глав и секций
 \usepackage{titlesec}
 
-% --- Оставляем скрытие глав (как у тебя сейчас) ---
-\titleformat{\chapter}[block]{\startnewchapter}{} {0pt}{\prechaptercmd}
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}
-\newcommand{\startnewchapter}{} 
-\newcommand{\prechaptercmd}[1]{}
-
-% --- Перенос каждой секции на новую страницу (для разделения билетов) ---
-% Эту команду важно сохранить, titlesec автоматически выполняет её перед каждым \section
 \newcommand{\sectionbreak}{\clearpage}
-
-% --- НАСТРОЙКА SECTION: Крупный шрифт ---
-% \Large делает шрифт заголовка (и номера 1.1, 2.3) заметно больше основного текста 14pt.
-% Если захочется сделать ЕЩЁ крупнее, замени \Large на \huge
-\titleformat{\section}{\Large\bfseries}{\thesection}{0.5em}{}
-
-% --- НАСТРОЙКА ОТСТУПОВ ДЛЯ SECTION ---
-% 1-й параметр (0pt) — отступ слева.
-% 2-й параметр (2pt) — отступ сверху от края страницы (так как срабатывает \clearpage).
-% 3-й параметр (2pt) — отступ снизу до начала текста (минимальный, чтобы текст не прилипал, но и место не тратилось).
+\titleformat{\section}
+  {\Large\bfseries}{\thesection}{1em}{}   
 \titlespacing*{\section}{0pt}{2pt}{2pt}
-
-% \newcommand{\sectionbreak}{\clearpage}
-% \titleformat{\section}
-%   {\large\bfseries}{\thesection}{1em}{}   
-% \titleformat{\chapter}
-%     {\Huge\bfseries}{}{0pt}{}
-% \titlespacing*{\chapter}
-%     {0cm}{-\topskip}{1em}[0pt]
+\titleformat{\chapter}
+    {\Huge\bfseries}{}{0pt}{}
+\titlespacing*{\chapter}
+    {0cm}{-\topskip}{1em}[0pt]
     
 %Библиография
 \usepackage{csquotes}
