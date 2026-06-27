@@ -1,0 +1,76 @@
+\section {Формула полной вероятности. Формула Байеса}
+
+\begin{defn}
+	Пусть задано вероятностное пространство $(\Omega, \SigAlg, \MyPr), \\ \text{события } {A, B \in \SigAlg,~ \MyPr(B) > 0}$. 
+	\textit{Условная вероятность события $A$ при событии $B$}:
+	\begin{equation*}
+        \MyPr(A|B)=\frac{\MyPr(AB)}{\MyPr(B)}.
+	\end{equation*}
+\end{defn}
+
+
+\begin{namedthm}[Формула полной вероятности]
+	Пусть даны события $A, B_1, \ldots, B_n, \ldots$; $\MyPr(B_i) > 0$, причём $B_i B_j = \varnothing~(i \neq j)$ и $\bigcup\limits_{i=1}^{\infty}B_i \supset A~$ (например, $\bigcup\limits_{i=1}^{\infty}B_i = \Omega$). 
+	Тогда справедлива формула:
+	\begin{equation*}
+		\MyPr(A)=\sum\limits_{i=1}^{\infty} \MyPr\left(B_{i}\right) \MyPr\left(A | B_{i}\right).
+	\end{equation*}
+\end{namedthm}
+
+\begin{proof}
+	Достаточно заметить, что при вышеперечисленных условиях $A = \bigcup\limits_{i=1}^{\infty}(AB_i),$ и $AB_i \cap AB_j = \varnothing ~(i \neq j).$ 
+	Тогда, учитывая $\MyPr(B_i) > 0$, получаем
+	\begin{equation*}
+		\MyPr(A)=\sum\limits_{i=1}^{\infty} \MyPr\left(A B_{i}\right)=\sum\limits_{i=1}^{\infty} \MyPr\left(B_{i}\right) \frac{\MyPr\left(A B_{i}\right)}{\MyPr\left(B_{i}\right)}=\sum\limits_{i=1}^{\infty} \MyPr\left(B_{i}\right) \MyPr\left(A | B_{i}\right). \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{namedthm}[Формулы Байеса]
+	Пусть даны события $A, H_1, \ldots, H_n, \ldots$; ${\MyPr(A) > 0}$, ${\MyPr(H_i) > 0}$, причём $H_i H_j = \varnothing ~(i \neq j)$ и $\bigcup\limits_{i=1}^\infty H_i \supset A$ (например, $\bigcup\limits_{i=1}^{\infty}H_i = \Omega$). Тогда справедливы \textit{формулы Байеса}:
+	\begin{equation*}
+        \MyPr\left(H_{i} | A\right)= \frac{\MyPr\left(H_{i}\right) \MyPr\left(A | H_{i}\right)}{\sum\limits_{j=1}^{\infty} \MyPr\left(H_{j}\right) \MyPr\left(A | H_{j}\right)}, \quad i = 1, 2, \ldots
+	\end{equation*}
+\end{namedthm}
+\begin{proof}
+	Согласно формуле полной вероятности, в знаменателе дроби стоит вероятность события $A$.
+	Тогда
+	\begin{equation*}
+        \frac{\MyPr\left(H_{i}\right) \MyPr\left(A | H_{i}\right)}{\MyPr(A)}=\frac{\MyPr\left(H_{i}\right) \cdot \frac{\MyPr\left(A H_{i}\right)}{\MyPr\left(H_{i}\right)}}{\MyPr(A)}=\frac{\MyPr\left(A H_{i}\right)}{\MyPr(A)}=\MyPr\left(H_{i} | A\right). \qedhere
+	\end{equation*}
+\end{proof}
+
+Вероятности $\MyPr(H_i)$, вычисленные заранее, до проведения эксперимента, называют \textit{априорными вероятностями} (a’priori~--- «до опыта»). 
+Условные вероятности $\MyPr(H_i | A)$ называют \textit{апостериорными вероятностями} (a’posteriori~--- «после опыта»). 
+Формула Байеса позволяет переоценить заранее известные вероятности после того, как получено знание о результате эксперимента.
+
+\begin{exmp}
+	Тест на рак имеет надёжность $99\%$ (т.е. вероятность как положительной, так и отрицательной ошибки равна $0{,}01$), рак появляется у $1\%$ населения. 
+	Какова вероятность того, что человек болен раком, если у него позитивный результат теста?
+	    
+	Составим таблицу для вероятностей всех возможных событий:
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline \multirow{2}{*} {Результат теста} & \multicolumn{2}{|c|} {Пациент реально болен} \\
+			\cline {2-3}                      & Да                  & Нет                \\
+			\hline Положительный & $0{,}99 \cdot 0{,}01$ & $0{,}01 \cdot 0{,}99$ \\
+			\hline Отрицательный & $0{,}01 \cdot 0{,}01$ & $0{,}99 \cdot 0{,}99$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	    
+	Введём следующие обозначения для событий: $H_{+} = \{\text{пациент болен}\}$, $H_{-} = \{\text{пациент здоров}\}$, $R_{+} = \{\text{положительный результат теста}\}$, \\ $R_{-} = \{\text{отрицательный результат теста}\}$. Найдём вероятность события $H_{+}$ при условии $R_{+}$ по формуле Байеса:
+	\begin{multline*}
+        \MyPr(H_{+}|R_{+}) = \frac{\MyPr(H_{+})\MyPr(R_{+}|H_{+})}{\MyPr(H_{+})\MyPr(R_{+}|H_{+}) + \MyPr(H_{-})\MyPr(R_{+}|H_{-})} = \\
+        = \frac{0{,}99 \cdot 0{,}01}{(0{,}99 \cdot 0{,}01) + (0{,}01 \cdot 0{,}99)} = 0{,}5
+	\end{multline*}
+	    
+	Иными словами, вероятность того, что пациент болен, равна отношению вероятности правильного положительного результата теста к вероятности любого положительного результата.
+	    
+	Рассмотрим более общий случай. Пусть $q$~--- вероятность неправильного результата теста, $p$~--- вероятность заболеть раком, тогда
+	\begin{equation*}
+		\MyPr(H_{+}|R_{+}) 
+        = \frac{(1-q) p}{(1-q) p+q(1-p)}
+        = \frac{p-q p}{p+q-2 q p}
+	\end{equation*}
+	Эта функция принимает значение $0{,}5$ на диагонали $p = q$; ниже диагонали~--- вероятность выше $0{,}5$, т.е. чтобы верить результатам теста, вероятность болезни должна превышать вероятность его ошибки.
+\end{exmp}
